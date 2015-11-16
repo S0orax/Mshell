@@ -71,7 +71,7 @@ void do_bg(char **argv) {
   job = treat_argv(argv);
 
   if(job != NULL) {
-    kill(job->jb_pid, SIGCONT);
+    kill(-job->jb_pid, SIGCONT);
     job->jb_state = BG;
   
     if(verbose)
@@ -99,7 +99,7 @@ void do_fg(char **argv) {
   job = treat_argv(argv);
 
   if(job != NULL) {
-    kill(job->jb_pid, SIGCONT);
+    kill(-job->jb_pid, SIGCONT);
     job->jb_state = FG;
     
     if(verbose) {
@@ -119,7 +119,7 @@ void do_stop(char **argv) {
   job = treat_argv(argv);
 
   if(job != NULL) {
-    kill(job->jb_pid, SIGSTOP);
+    kill(-job->jb_pid, SIGSTOP);
     job->jb_state = ST;
 
     if(verbose)
@@ -136,7 +136,7 @@ void do_kill(char **argv) {
   job = treat_argv(argv);
 
   if(job != NULL) {
-    kill(job->jb_pid, SIGKILL);
+    kill(-job->jb_pid, SIGKILL);
 
     if(verbose)
       printf("job with jid %d was killed\n", job->jb_jid);
