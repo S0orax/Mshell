@@ -146,15 +146,18 @@ void do_kill(char **argv) {
 }
 
 /* do_exit - Execute the builtin exit command */
+static int nbAppel = 0;
+
 void do_exit() {
   struct job_t *job;
 
   job = jobs_getstoppedjob();
 
-  if(job == NULL) {
+  if(job == NULL || nbAppel == 1) {
     exit(EXIT_SUCCESS);
   } else {
     printf("There is some stopped jobs");
+    nbAppel = 1;
     if(verbose)
       printf("Stopped job is : [%d]\n", job->jb_jid);
   }
