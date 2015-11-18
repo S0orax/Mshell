@@ -165,7 +165,6 @@ void do_exit() {
 /* do_jobs - Execute the builtin jobs command */
 void do_jobs() {
   jobs_listjobs();
-  printf("\n");
 
   return;
 }

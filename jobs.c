@@ -160,7 +160,7 @@ void jobs_listjobs() {
             default:
                 printf("listjobs: Internal error: job[%d].state=%d ", i, jobs[i].jb_state);
             }
-            printf("%s", jobs[i].jb_cmdline);
+            printf("%s\n", jobs[i].jb_cmdline);
         }
     }
 }
